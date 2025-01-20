@@ -1,4 +1,4 @@
-Repository of Nicolas CHARPENTIER E5 AIC.
+Repository of Nicolas CHARPENTIER E5 AIC. ESIEE Paris. 2024-2025
 
 I'm alone on both TPs and Project.
 
