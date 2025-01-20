@@ -1,4 +1,4 @@
-For all of these Labs, only the main code was done on the exercise, no Bonus.
+For all of these Labs, only the main code was done on the exercises notebook, no Bonus.
 
 All the labs were done on Google Colab also, for the execution, some modification may be necessary on the path.
 
