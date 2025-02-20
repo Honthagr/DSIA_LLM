@@ -23,6 +23,8 @@ The dataset 1 was the original chosen for the project. After some test, I decide
 
 <ins>MCQ.py</ins> : python script containing the interface of the project. It's a simple tkinter window on which we write the questions and the possible answers, and the model return which answer seems the most probable.
 
+<ins>Example.webm</ins> : Short video showing how the UI works.
+
 ## Result obtained :
 
 At the end of multiple training and adjustement, I was able to obtain a model with 40% accuracy on the test data. I'm not satisfied with this, but I couldn't do more with the ressources and time at hand.
