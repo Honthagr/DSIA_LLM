@@ -8,7 +8,7 @@ For the project I decided to fine-tune the GPT2 Medium model, to be able to answ
 
 The dataset 1 was the original chosen for the project. After some test, I decided to select another one (dataset 2), to focus the model on medical questions.
 
-<ins>Model</ins> :
+<ins>Model</ins> : https://www.dropbox.com/scl/fi/bcsk3permdxae1vmgin06/gpt2-medium355MProjet3.pth?rlkey=hyzxl6kogs5wa170hqtex2jr2&st=ybsze3xi&dl=0
 
 <ins>Loss plot</ins> : They correspond to the loss obtain after training the model. 
 - The first correspond to the training with the first dataset with 2 epochs on 200 questions,
@@ -38,3 +38,21 @@ For that I used Google Colab Free, which provide 4 hours of GPU. So I already kn
 I started by using my lab7 who contained a fine tuning. This garantee a chatgpt2 model working. Then I found my first dataset, which contained 200 questions for a MCQ. My first idea was to simple fine tune the model to be able to answer an MCQ, without having a specific field for the knowledge.
 
 I used the alpaca-style prompt format after extracting the information from the CSV to transform my dataset into one usable by the model for the training.
+
+Then I trained my model on few epochs (2-3) to look at the result with a small training. I quiclky saw that while the model was able to answer with on a letter corresponding to an answer (A,B,C or D), all the answer were wrong. The dataset that I used was too specific and the model didn't had the knowledge to answer them.
+
+I then decided to swap to another dataset, the second one, that contain a big amount of MCQ Question for the medical field. I thought that to specialise the model to train it on a specific field would obtain better result in it.
+
+I started by training it on 6500 questions for 5 epochs. I obtain a model that overfit on the training data (loss plot 2). If it was on all the dataset this would have been okay because it means that the model learned about the medical knowledge, but I'm only on 6500 questions out of 180000 so it's not that good, because the model can only answer a part of the question.
+
+Since the model started to overfit after 1-2 epochs, I decided to increase the number of questions while reducing the number of epochs : 26000 questions on 1 epochs. This result on a model obtaining average result (40% accuracy with llama score) on both test and training data, but without overfitting.
+
+Unfortunately I already used all the gpu available on my 2 google accounts, and can't train again the model to obtain better result.
+
+To obtain better result, at least on the training data, I'd have done 2-3 epochs and use llama on the result to verify if the model learn well from them.
+
+If it works, it means the reason behind the bad result, come from the lack of knowledge of the model gpt 2 medium. To solve this I have 2 solutions in my opinion : first use all the 180000 questions from the dataset, with an extensive training to make the model learn about the medical knowledge required to answer the questions. Second, fine tune only some layers at the end of the model, for it to learn to answer only with A,B,C,D. Then use a RAG to provide all the knowledge when answering the question. The first solution would allow the model to have more flexibility, while the other would offer better accuracy.
+
+As I don't have enough ressources, I can't put into practice these two solutions, but I think the RAG is a better idea for this type of model as we want to garantee accuracy. It also let the user provide the document for the RAG, and these can be modified depending of the requirement, without having to retrain the model. So the model would be good for all type of MCQ as long the the knowledge is given, and wouldn't only be for medical MCQ.
+
+Finally, I created a python script that use the model and offer an UI to use it easily.
