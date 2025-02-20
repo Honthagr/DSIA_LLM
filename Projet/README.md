@@ -1,6 +1,6 @@
 For the project I decided to fine-tune the GPT2 Medium model, to be able to answer medical multi-choice question (MCQ).
 
-## File provided : 
+## Files and ressource provided : 
 
 <ins>Dataset 1</ins> : https://www.kaggle.com/competitions/kaggle-llm-science-exam
 
